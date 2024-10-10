@@ -128,13 +128,13 @@ public class RetryExampleWorkload extends WorkloadSimulationBase implements Work
     private WorkloadDesc createTablesWorkload = new WorkloadDesc(
             RetryExampleWorkload.WorkloadType.CREATE_TABLES.toString(),
             "テーブルの作成",
-            "Create the database tables. If the table already exists it will be dropped"
+            "データベーステーブルを作成します。テーブルがすでに存在する場合は削除されます。"
     );
 
     private WorkloadDesc seedingWorkload = new WorkloadDesc(
             RetryExampleWorkload.WorkloadType.SEED_DATA.toString(),
             "シードデータ",
-            "Load data into the orders table",
+            "注文テーブルにデータをロードする",
             new WorkloadParamDesc("生成するレコード数", 1, Integer.MAX_VALUE, 10000),
             new WorkloadParamDesc("スレッド", 1, Integer.MAX_VALUE, 32)
     );
@@ -142,8 +142,8 @@ public class RetryExampleWorkload extends WorkloadSimulationBase implements Work
     private WorkloadDesc runningWorkload = new WorkloadDesc(
             RetryExampleWorkload.WorkloadType.RUN_SIMULATION.toString(),
             "シミュレーション - TPS",
-            "Run a simulation of a reads on orders placed",
-            new WorkloadParamDesc("Throughput (tps)", 1, 1000000, 500),
+            "発注された注文の読み取りシミュレーションを実行する",
+            new WorkloadParamDesc("スループット (tps)", 1, 1000000, 500),
             new WorkloadParamDesc("最大スレッド数", 1, Integer.MAX_VALUE, 64),
             new WorkloadParamDesc("新規注文（インサート）を含む", false)
     );
@@ -151,17 +151,17 @@ public class RetryExampleWorkload extends WorkloadSimulationBase implements Work
     private WorkloadDesc simulationFixedWorkload = new WorkloadDesc(
             RetryExampleWorkload.WorkloadType.RUN_SIMULATION_FIXED_WORKLOAD.toString(),
             "シミュレーション",
-            "Run a simulation of a reads on orders placed",
-            new WorkloadParamDesc("Invocations", 1, Integer.MAX_VALUE, 1000000),
+            "発注された注文の読み取りシミュレーションを実行する",
+            new WorkloadParamDesc("呼び出し回数", 1, Integer.MAX_VALUE, 1000000),
             new WorkloadParamDesc("最大スレッド数", 1, Integer.MAX_VALUE, 64),
             new WorkloadParamDesc("新規注文（インサート）を含む", false)
     );
 
     private WorkloadDesc RetryAndTransactionTemplateWorkload = new WorkloadDesc(
             WorkloadType.RETRY_AND_TRANSACTION_TEMPLATE.toString(),
-            "Test Retries on Transactions",
-            "This example demonstrates handling retries and transactions using different springboot options.",
-            new WorkloadParamDesc("Invocations", 1, Integer.MAX_VALUE, 1000000),
+            "トランザクションの再試行をテストする",
+            "この例では、さまざまな Spring Boot オプションを使用して再試行とトランザクションを処理する方法を示します。",
+            new WorkloadParamDesc("呼び出し回数", 1, Integer.MAX_VALUE, 1000000),
             new WorkloadParamDesc("最大スレッド数", 1, Integer.MAX_VALUE, 64),
             new WorkloadParamDesc("Test Type", 0,new String[]{"RetryTemplateWithTransactionTemplate", "RetryWithTransactionalAnnotation","RetryWithTrxManager"})
     );

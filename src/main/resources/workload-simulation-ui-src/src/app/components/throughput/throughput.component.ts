@@ -144,7 +144,7 @@ export class ThroughputComponent implements OnInit, AfterViewInit, OnChanges {
       labels = ["Min", "Avg", "Max"];
     }
     else {
-      labels = ["Failed", "Success", "Total"];
+      labels = ["失敗", "成功", "合計"];
     }
     for (let i = 0; i < labels.length; i++) {
       let startX = (boxWidth / labels.length) * i;

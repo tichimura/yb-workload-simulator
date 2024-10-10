@@ -131,7 +131,7 @@ public class GenericWorkload extends WorkloadSimulationBase implements WorkloadS
             GenericWorkload.WorkloadType.RUN_SIMULATION.toString(),
             "シミュレーション - old",
             "3つのテーブルからのリードのシミュレーションを実行する（チャート上のレイテンシは、3つのセレクトと3つのインサートの累積値を表示します）。",
-            new WorkloadParamDesc("Throughput (tps)", 1, 1000000, 500),
+            new WorkloadParamDesc("スループット (tps)", 1, 1000000, 500),
             new WorkloadParamDesc("最大スレッド数", 1, 500, 64),
             new WorkloadParamDesc("Include new Inserts (to 3 tables)", false)
     );
@@ -140,7 +140,7 @@ public class GenericWorkload extends WorkloadSimulationBase implements WorkloadS
             GenericWorkload.WorkloadType.RUN_SIMULATION_FIXED_WORKLOAD.toString(),
             "シミュレーション",
             "3つのテーブルからのリードのシミュレーションを実行する（チャート上のレイテンシは、3つのセレクトと3つのインサートの累積値を表示します）。",
-            new WorkloadParamDesc("Invocations", 1, 10000000, 1000000),
+            new WorkloadParamDesc("呼び出し回数", 1, 10000000, 1000000),
             new WorkloadParamDesc("最大スレッド数", 1, 500, 64),
             new WorkloadParamDesc("Include new Inserts (to 3 tables)", false)
     );

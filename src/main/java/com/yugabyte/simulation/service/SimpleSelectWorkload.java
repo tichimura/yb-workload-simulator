@@ -108,8 +108,8 @@ public class SimpleSelectWorkload extends WorkloadSimulationBase implements Work
 	private WorkloadDesc runningWorkload = new WorkloadDesc(
 			WorkloadType.RUN_SIMULATION.toString(),
 			"シミュレーション",
-			"Run a simulation of a simple table",
-			new WorkloadParamDesc("Throughput (tps)", 1, 1000000, 500),
+			"シンプルなテーブルのシミュレーションを実行する",
+			new WorkloadParamDesc("スループット (tps)", 1, 1000000, 500),
 			new WorkloadParamDesc("最大スレッド数", 1, 500, 64)
 		);
 	

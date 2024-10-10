@@ -120,7 +120,7 @@ public class NewFormatWorkload extends WorkloadSimulationBase implements Workloa
 						WorkloadType.RUN_SIMULATION.toString(),
 						"シミュレーション",
 						"Run a simulation of a simple table with finie bounds",
-						new WorkloadParamDesc("Invocations", 1, Integer.MAX_VALUE, 1000),
+						new WorkloadParamDesc("呼び出し回数", 1, Integer.MAX_VALUE, 1000),
 						new WorkloadParamDesc("Delay", 0, 1000000, 0),
 						new WorkloadParamDesc("スレッド", 1, 500, 32)
 					)
@@ -139,7 +139,7 @@ public class NewFormatWorkload extends WorkloadSimulationBase implements Workloa
 				new WorkloadDesc(
 						WorkloadType.UNBOUNDED_SIMULATION.toString(),
 						"Unbounded Simulation",
-						"Run a simulation of a simple table",
+						"シンプルなテーブルのシミュレーションを実行する",
 						new WorkloadParamDesc("TPS", 1, Integer.MAX_VALUE, 1000),
 						new WorkloadParamDesc("MaxThreads", 1, 500, 32)
 					)

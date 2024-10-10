@@ -79,8 +79,8 @@ public class PitrSqlDemoWorkload extends WorkloadSimulationBase implements Workl
 	private WorkloadDesc runningWorkload = new WorkloadDesc(
 			WorkloadType.RUN_SIMULATION.toString(),
 			"シミュレーション",
-			"Run a simulation of a simple table",
-			new WorkloadParamDesc("Invocations", 1, Integer.MAX_VALUE, 1000),
+			"シンプルなテーブルのシミュレーションを実行する",
+			new WorkloadParamDesc("呼び出し回数", 1, Integer.MAX_VALUE, 1000),
 			new WorkloadParamDesc("Delay", 0, 1000000, 0)
 		);
 	

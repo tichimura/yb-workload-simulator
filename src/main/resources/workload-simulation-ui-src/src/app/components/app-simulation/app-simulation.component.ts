@@ -365,15 +365,15 @@ export class AppSimulationComponent implements AfterViewInit, OnInit {
     this.dataSource.invokeWorkload(name, paramsToSend).subscribe(success => {
       console.log(success);
       if (success.result ==0) {
-        this.status = "Workload " + name + " successfully submitted."
+        this.status = "ワークロード " + name + " は正常に開始されました。"
       }
       else {
-        this.status = "Workload " + name + " failed to submit. Reported error was " + success.data;
+        this.status = "ワークロード " + name + " は失敗しました。報告されたエラーは " + success.data + " です。";
       }
     },
     (error => {
       console.log(error);
-      this.status = "Workload " + name + " failed to submit";
+      this.status = "ワークロード " + name + " は失敗しました。";
     }));
   }
 
