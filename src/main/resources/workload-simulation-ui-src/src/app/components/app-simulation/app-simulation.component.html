@@ -1,5 +1,5 @@
 <div (wheel)="onMouseWheel($event)">
-    <p-panel [header]="'Active Workloads for ' + systemPreferences.workloadName" [toggleable]="true" [collapsed]="false">
+    <p-panel [header]="'アクティブなワークロード： ' + systemPreferences.workloadName" [toggleable]="true" [collapsed]="false">
 
         <div *ngFor="let panel of activeWorkloads" class="workload-inst" [ngClass]="currentData[panel].workloadId">
             <!-- <p-panel [header]="currentData[panel].workloadId" [toggleable]="true" [collapsed]="false"> -->
@@ -25,7 +25,7 @@
         </p-panel>
 
         <div class="mt-2">
-            <p-panel header="Network Diagram and Aggregate Statistics" [toggleable]="true" [collapsed]="false">
+            <p-panel header="ネットワーク図と集計統計" [toggleable]="true" [collapsed]="false">
                 <ng-template pTemplate="icons">
                     <button pButton class="p-panel-header-icon p-link" (click)="networkConfigMenu.toggle($event)">
                         <span class="pi pi-cog"></span>
@@ -152,14 +152,14 @@
         Communications with the server cannot be established. Please check network connectivity.
     </p-dialog>
 
-    <p-dialog [(visible)]="showDialog" [header]="'Workload Management for ' + systemPreferences.workloadName" [modal]="true" [style]="{width: '50vw', height: '75%'}"
+    <p-dialog [(visible)]="showDialog" [header]="'ワークロード管理： ' + systemPreferences.workloadName" [modal]="true" [style]="{width: '50vw', height: '75%'}"
     [draggable]="true" [resizable]="true" [closable]="true" [focusOnShow]="true" [maximizable]="true" (onHide)="closeDialog()">
 
     <p-tabView *ngIf="valuesComputed" (onChange)="handleChange($event)">
-        <p-tabPanel header="System Preferences">
+        <p-tabPanel header="システム設定">
             <div class="grid">
                 <div class="col-4" style="text-align:right;">
-                    <label for="doLogging">Log results:</label>
+                    <label for="doLogging">ログを保存する:</label>
                 </div>
                 <div class="col-8">
                     <p-inputSwitch id="doLogging" [(ngModel)]="editingSystemPreferences.doLogging"></p-inputSwitch>
@@ -167,7 +167,7 @@
             </div>
             <div class="grid">
                 <div class="col-4" style="text-align: right;">
-                    <label for="loggingDir">Log Directory:</label>
+                    <label for="loggingDir">ログの保存ディレクトリ:</label>
                 </div>
                 <div class="col-8">
                     <input id="loggingDir" [disabled]="!editingSystemPreferences.doLogging" pInputText style="width:100%" name="loggingDir" [(ngModel)]="editingSystemPreferences.loggingDir">
@@ -175,7 +175,7 @@
             </div>
             <div class="grid">
                 <div class="col-4" style="text-align: right;">
-                    <label for="graphRefreshMs">Graph Refresh Period (ms):</label>
+                    <label for="graphRefreshMs">グラフ更新期間 (ms):</label>
                 </div>
                 <div class="col-8">
                     <p-inputNumber id="graphRefreshMs" [inputStyle]="{width:'100%'}" name="graphRefreshMs" [(ngModel)]="editingSystemPreferences.graphRefreshMs" [min]="10"></p-inputNumber>
@@ -183,17 +183,17 @@
             </div>
             <div class="grid">
                 <div class="col-4" style="text-align: right;">
-                    <label for="networkRefreshMs">Network Refresh Period (ms):</label>
+                    <label for="networkRefreshMs">ネットワーク更新期間 (ms):</label>
                 </div>
                 <div class="col-8">
                     <p-inputNumber id="networkRefreshMs" [inputStyle]="{width:'100%'}" name="networkRefreshMs" [(ngModel)]="editingSystemPreferences.networkRefreshMs" [min]="10"></p-inputNumber>
                 </div>
             </div>
             <div class="mt-3">
-                <p-button icon="fa-solid fa-save" (click)="saveSystemSettings()" label="Save"></p-button>
+                <p-button icon="fa-solid fa-save" (click)="saveSystemSettings()" label="保存する"></p-button>
             </div>
         </p-tabPanel>
-        <p-tabPanel header="Usable Operations" leftIcon="fa-solid fa-table">
+        <p-tabPanel header="操作一覧" leftIcon="fa-solid fa-table">
             <p-accordion>
                 <ng-container *ngFor="let workload of getWorkloads(); let i = index">
                     <p-accordionTab header="{{workload.name}}" [(selected)]="selected[i]">
@@ -228,14 +228,14 @@
                             </div>
                         </div>
                         <div class="mt-3">
-                            <p-button icon="fa-solid fa-right-to-bracket" (click)="launchWorkload(workload.workloadId)" label="Run {{workload.name}} Workload"></p-button>
+                            <p-button icon="fa-solid fa-right-to-bracket" (click)="launchWorkload(workload.workloadId)" label="{{workload.name}} のワークロードを実行する"></p-button>
                         </div>
                     </p-accordionTab>
                 </ng-container>
             </p-accordion>
 
         </p-tabPanel>
-        <p-tabPanel header="Active Workloads" leftIcon="fa-solid fa-table">
+        <p-tabPanel header="アクティブワークロード" leftIcon="fa-solid fa-table">
             <p-table [value]="workloadResults" dataKey="workloadId" [rowHover]="true" [loading]="activeLoading" responsiveLayout="scroll" [globalFilterFields]="['description','startTime']">
                 <ng-template pTemplate="header">
                     <tr>
@@ -289,7 +289,7 @@
         <div class="status mt-3" style="color: lightblue; text-align: left; display: inline-block; width: 80%">
             {{status}}
         </div>
-        <p-button icon="pi pi-check" (click)="closeDialog()" label="Close"></p-button>
+        <p-button icon="pi pi-check" (click)="closeDialog()" label="閉じる"></p-button>
     </ng-template>
 </p-dialog>
 

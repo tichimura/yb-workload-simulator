@@ -21,7 +21,7 @@ import { Configuration } from 'src/app/model/yugabyte-managed/configuration.mode
 })
 
 export class AppSimulationComponent implements AfterViewInit, OnInit {
-  @ViewChild("accordion", {static:false}) 
+  @ViewChild("accordion", {static:false})
   accordion!: ElementRef;
 
   items!: MenuItem[];
@@ -64,7 +64,7 @@ export class AppSimulationComponent implements AfterViewInit, OnInit {
 
   ybOptions = ['Yugabyte DB', 'Yugabyte Anywhere', 'Yugabyte Managed'];
   ybOption = this.ybOptions[0];
-  
+
   showConfigDialog = false;
   ybmOptions : Configuration = {
     managementType: this.ybOption,
@@ -230,7 +230,7 @@ export class AppSimulationComponent implements AfterViewInit, OnInit {
   delete() {
     console.log("delete");
   }
-  
+
   private setSystemPreferences(preferences : SystemPreferences) {
     this.systemPreferences = preferences;
     clearInterval(this.timer);
@@ -286,7 +286,7 @@ export class AppSimulationComponent implements AfterViewInit, OnInit {
               currentValues[thisParam.name] = '';
             }
             break;
-  
+
         }
       }
       this.workloadValues[thisWorkload.workloadId] = currentValues;
@@ -360,7 +360,7 @@ export class AppSimulationComponent implements AfterViewInit, OnInit {
         }
       }
     }
-    
+
     this.status = "Submitting workload " + name + "..."
     this.dataSource.invokeWorkload(name, paramsToSend).subscribe(success => {
       console.log(success);
@@ -383,7 +383,7 @@ export class AppSimulationComponent implements AfterViewInit, OnInit {
       let lastCommsErrorDialog = this.commsErrorDialog;
       this.commsErrorDialog = false;
 
-      // Iterate through the workloads based on the information here. 
+      // Iterate through the workloads based on the information here.
       if (!data[this.AGGREGATION_WORKLOAD]) {
         return;
       }
@@ -440,7 +440,7 @@ export class AppSimulationComponent implements AfterViewInit, OnInit {
       let change = 1+(amount/1200);
       this.duration = Math.floor(Math.max(this.minDuration, Math.min(this.maxDuration, this.duration * change)));
     }
-  } 
+  }
 
   displayDialog() {
     // setTimeout(() => {

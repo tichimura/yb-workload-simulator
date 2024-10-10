@@ -115,33 +115,33 @@ public class GenericWorkload extends WorkloadSimulationBase implements WorkloadS
 
     private WorkloadDesc createTablesWorkload = new WorkloadDesc(
             GenericWorkload.WorkloadType.CREATE_TABLES.toString(),
-            "Create Tables",
-            "Create the table. If the table already exists it will be dropped"
+            "テーブルの作成",
+            "テーブルを作成する。テーブルがすでに存在する場合は削除される。"
     );
 
     private WorkloadDesc seedingWorkload = new WorkloadDesc(
             GenericWorkload.WorkloadType.SEED_DATA.toString(),
-            "Seed Data",
-            "Load data into the 3 tables (Latency on charts will show cumulative value for 3 inserts)",
-            new WorkloadParamDesc("Items to generate:", 1, Integer.MAX_VALUE, 1000),
-            new WorkloadParamDesc("Threads", 1, 500, 32)
+            "シードデータ",
+            "3つのテーブルにデータをロードする（チャートのレイテンシは3回のインサートの累積値を表示する）",
+            new WorkloadParamDesc("生成するレコード数", 1, Integer.MAX_VALUE, 1000),
+            new WorkloadParamDesc("スレッド", 1, 500, 32)
     );
 
     private WorkloadDesc runningWorkload = new WorkloadDesc(
             GenericWorkload.WorkloadType.RUN_SIMULATION.toString(),
-            "Simulation - old",
-            "Run a simulation of a reads from 3 tables (Latency on charts will show cumulative value for 3 selects and 3 inserts)",
+            "シミュレーション - old",
+            "3つのテーブルからのリードのシミュレーションを実行する（チャート上のレイテンシは、3つのセレクトと3つのインサートの累積値を表示します）。",
             new WorkloadParamDesc("Throughput (tps)", 1, 1000000, 500),
-            new WorkloadParamDesc("Max Threads", 1, 500, 64),
+            new WorkloadParamDesc("最大スレッド数", 1, 500, 64),
             new WorkloadParamDesc("Include new Inserts (to 3 tables)", false)
     );
 
     private WorkloadDesc simulationFixedWorkload = new WorkloadDesc(
             GenericWorkload.WorkloadType.RUN_SIMULATION_FIXED_WORKLOAD.toString(),
-            "Simulation",
-            "Run a simulation of a reads from 3 tables (Latency on charts will show cumulative value for 3 selects and 3 inserts)",
+            "シミュレーション",
+            "3つのテーブルからのリードのシミュレーションを実行する（チャート上のレイテンシは、3つのセレクトと3つのインサートの累積値を表示します）。",
             new WorkloadParamDesc("Invocations", 1, 10000000, 1000000),
-            new WorkloadParamDesc("Max Threads", 1, 500, 64),
+            new WorkloadParamDesc("最大スレッド数", 1, 500, 64),
             new WorkloadParamDesc("Include new Inserts (to 3 tables)", false)
     );
 
