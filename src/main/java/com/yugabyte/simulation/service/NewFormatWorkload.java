@@ -81,9 +81,9 @@ public class NewFormatWorkload extends WorkloadSimulationBase implements Workloa
 		return Arrays.asList(
 				new WorkloadDesc(
 						WorkloadType.CREATE_TABLES.toString(),
-						"Create Tables"
+						"テーブルの作成"
 					)
-					.setDescription("Create the table. If the table already exists it will be dropped")
+					.setDescription("テーブルを作成する。テーブルがすでに存在する場合は削除される。")
 					.onInvoke((runner, params) -> {
 						runner.newFixedStepsInstance(
 							new Step("Drop Table", (a,b) -> jdbcTemplate.execute(DROP_TABLE)),	
@@ -98,7 +98,7 @@ public class NewFormatWorkload extends WorkloadSimulationBase implements Workloa
 						"Seed the data",
 						"Create sample data",
 						new WorkloadParamDesc("Number of records", 1, Integer.MAX_VALUE, 1000),
-						new WorkloadParamDesc("Threads", 1, 500, 32)
+						new WorkloadParamDesc("スレッド", 1, 500, 32)
 					)
 					.onInvoke((runner, params) -> {
 						jdbcTemplate.setFetchSize(1000);
@@ -118,11 +118,11 @@ public class NewFormatWorkload extends WorkloadSimulationBase implements Workloa
 
 				new WorkloadDesc(
 						WorkloadType.RUN_SIMULATION.toString(),
-						"Simulation",
+						"シミュレーション",
 						"Run a simulation of a simple table with finie bounds",
-						new WorkloadParamDesc("Invocations", 1, Integer.MAX_VALUE, 1000),
+						new WorkloadParamDesc("呼び出し回数", 1, Integer.MAX_VALUE, 1000),
 						new WorkloadParamDesc("Delay", 0, 1000000, 0),
-						new WorkloadParamDesc("Threads", 1, 500, 32)
+						new WorkloadParamDesc("スレッド", 1, 500, 32)
 					)
 					.onInvoke((runner, params) -> {
 						jdbcTemplate.setFetchSize(1000);
@@ -139,7 +139,7 @@ public class NewFormatWorkload extends WorkloadSimulationBase implements Workloa
 				new WorkloadDesc(
 						WorkloadType.UNBOUNDED_SIMULATION.toString(),
 						"Unbounded Simulation",
-						"Run a simulation of a simple table",
+						"シンプルなテーブルのシミュレーションを実行する",
 						new WorkloadParamDesc("TPS", 1, Integer.MAX_VALUE, 1000),
 						new WorkloadParamDesc("MaxThreads", 1, 500, 32)
 					)

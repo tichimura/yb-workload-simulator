@@ -25,7 +25,7 @@ export class YugabyteDataSourceService {
       this.baseUrl = `${PROTOCOL}://localhost:${PORT}/`;
     }
     else {
-      this.baseUrl = "";
+      this.baseUrl = `${PROTOCOL}://localhost:${PORT}/`;
     }
   }
 
@@ -44,7 +44,7 @@ export class YugabyteDataSourceService {
   getTimingResults(afterTime : number) : Observable<any> {
     return this.http.get<any>(this.baseUrl + "api/getResults/" + afterTime);
   }
-  
+
   createTables() : Observable<number> {
     return this.http.get<number>(this.baseUrl + "api/create-table");
   }
@@ -109,7 +109,7 @@ export class YugabyteDataSourceService {
     return this.http.get<InvocationResult>(this.baseUrl+'api/ybm/scale', {params: params});
   }
 
-  isExistingUser() : Observable<BooleanInvocationResult> { 
+  isExistingUser() : Observable<BooleanInvocationResult> {
     return this.http.get<BooleanInvocationResult>(this.baseUrl+'user/existingUser');
   }
 

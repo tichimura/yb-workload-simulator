@@ -103,34 +103,34 @@ public class QuikShipWorkload extends WorkloadSimulationBase implements Workload
 
     private WorkloadDesc createTablesWorkload = new WorkloadDesc(
             QuikShipWorkload.WorkloadType.CREATE_TABLES.toString(),
-            "Create Tables",
-            "Create the database tables. If the table already exists it will be dropped"
+            "テーブルの作成",
+            "データベーステーブルを作成します。テーブルがすでに存在する場合は削除されます。"
     );
 
     private WorkloadDesc seedingWorkload = new WorkloadDesc(
             QuikShipWorkload.WorkloadType.SEED_DATA.toString(),
-            "Seed Data",
-            "Load data into the orders table",
-            new WorkloadParamDesc("Items to generate:", 1, Integer.MAX_VALUE, 10000),
-            new WorkloadParamDesc("Threads", 1, Integer.MAX_VALUE, 32)
+            "シードデータ",
+            "注文テーブルにデータをロードする",
+            new WorkloadParamDesc("生成するレコード数", 1, Integer.MAX_VALUE, 10000),
+            new WorkloadParamDesc("スレッド", 1, Integer.MAX_VALUE, 32)
     );
 
     private WorkloadDesc runningWorkload = new WorkloadDesc(
             QuikShipWorkload.WorkloadType.RUN_SIMULATION.toString(),
-            "Simulation - TPS",
-            "Run a simulation of a reads on orders placed",
-            new WorkloadParamDesc("Throughput (tps)", 1, 1000000, 500),
-            new WorkloadParamDesc("Max Threads", 1, Integer.MAX_VALUE, 64),
-            new WorkloadParamDesc("Include placing of new orders (inserts)", false)
+            "シミュレーション - TPS",
+            "発注された注文の読み取りシミュレーションを実行する",
+            new WorkloadParamDesc("スループット (tps)", 1, 1000000, 500),
+            new WorkloadParamDesc("最大スレッド数", 1, Integer.MAX_VALUE, 64),
+            new WorkloadParamDesc("新規注文（インサート）を含む", false)
     );
 
     private WorkloadDesc simulationFixedWorkload = new WorkloadDesc(
             QuikShipWorkload.WorkloadType.RUN_SIMULATION_FIXED_WORKLOAD.toString(),
-            "Simulation",
-            "Run a simulation of a reads on orders placed",
-            new WorkloadParamDesc("Invocations", 1, Integer.MAX_VALUE, 1000000),
-            new WorkloadParamDesc("Max Threads", 1, Integer.MAX_VALUE, 64),
-            new WorkloadParamDesc("Include placing of new orders (inserts)", false)
+            "シミュレーション",
+            "発注された注文の読み取りシミュレーションを実行する",
+            new WorkloadParamDesc("呼び出し回数", 1, Integer.MAX_VALUE, 1000000),
+            new WorkloadParamDesc("最大スレッド数", 1, Integer.MAX_VALUE, 64),
+            new WorkloadParamDesc("新規注文（インサート）を含む", false)
     );
 
 
@@ -266,10 +266,15 @@ public class QuikShipWorkload extends WorkloadSimulationBase implements Workload
 
     private void runInserts(){
         UUID uuid = LoadGeneratorUtils.getUUID();
-        jdbcTemplate.update(INSERT_RECORD_ORDERS,
-                LoadGeneratorUtils.getDouble(1.00,1000.00),
-                LoadGeneratorUtils.getText(10,40)
-        );
+        try {
+            jdbcTemplate.update(INSERT_RECORD_ORDERS,
+                    LoadGeneratorUtils.getDouble(1.00, 1000.00),
+                    LoadGeneratorUtils.getText(10, 40)
+            );
+        }
+        catch (Exception e) {
+            throw e;
+        }
     }
 
 

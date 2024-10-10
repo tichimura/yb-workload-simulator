@@ -137,10 +137,10 @@ export class StatisticsGraphComponent implements OnInit, AfterViewInit, OnChange
 
   private getHeadingString() : string {
     if (this.timingMetricName) {
-      return (this.timingType == "LATENCY" ? "Latency " : "Throughput ") + "(" + this.timingMetricName + ")";
+      return (this.timingType == "LATENCY" ? "レイテンシー " : "スループット ") + "(" + this.timingMetricName + ")";
     }
     else {
-      return (this.timingType == "LATENCY" ? "Latency " : "Throughput ");
+      return (this.timingType == "LATENCY" ? "レイテンシー " : "スループット ");
     }
   }
 
@@ -255,7 +255,7 @@ export class StatisticsGraphComponent implements OnInit, AfterViewInit, OnChange
       .attr('font-size', '1em')
       .attr('x', -this.margins.top-160)
       .attr('y', -this.margins.left+65)
-      .text(this.timingType == 'LATENCY' ? 'Latency (ms)' : 'Count');
+      .text(this.timingType == 'LATENCY' ? 'レイテンシー (ms)' : 'カウント');
   }
 
   private defineAxes() {
