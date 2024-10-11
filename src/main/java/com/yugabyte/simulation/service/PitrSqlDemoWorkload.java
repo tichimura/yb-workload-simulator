@@ -72,15 +72,15 @@ public class PitrSqlDemoWorkload extends WorkloadSimulationBase implements Workl
 	
 	private WorkloadDesc createTablesWorkload = new WorkloadDesc(
 			WorkloadType.CREATE_TABLES.toString(),
-			"Create Tables", 
-			"Create the table. If the table already exists it will be dropped"
+			"テーブルの作成", 
+			"テーブルを作成する。テーブルがすでに存在する場合は削除される。"
 		);
 	
 	private WorkloadDesc runningWorkload = new WorkloadDesc(
 			WorkloadType.RUN_SIMULATION.toString(),
-			"Simulation",
-			"Run a simulation of a simple table",
-			new WorkloadParamDesc("Invocations", 1, Integer.MAX_VALUE, 1000),
+			"シミュレーション",
+			"シンプルなテーブルのシミュレーションを実行する",
+			new WorkloadParamDesc("呼び出し回数", 1, Integer.MAX_VALUE, 1000),
 			new WorkloadParamDesc("Delay", 0, 1000000, 0)
 		);
 	

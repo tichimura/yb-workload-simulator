@@ -195,7 +195,7 @@ public abstract class WorkloadTypeInstance {
 			sb.append(", ");
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		sb.append(" started at:").append(sdf.format(new Date(this.startTime)));
+		sb.append(" 開始時刻:").append(sdf.format(new Date(this.startTime)));
 		sb.append(")");
 		this.setDescription(sb.toString());
 	}

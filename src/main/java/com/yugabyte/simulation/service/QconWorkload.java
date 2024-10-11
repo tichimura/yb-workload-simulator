@@ -54,7 +54,7 @@ public class QconWorkload extends WorkloadSimulationBase implements WorkloadSimu
             "API Call",
             "Load data into the database",
             new WorkloadParamDesc("API call #:", 1, Integer.MAX_VALUE, 10000),
-            new WorkloadParamDesc("Threads", 1, Integer.MAX_VALUE, 32),
+            new WorkloadParamDesc("スレッド", 1, Integer.MAX_VALUE, 32),
             new WorkloadParamDesc("API Endpoint", "http://localhost:8080/transactions/create-random-transaction")
     );
 

@@ -63,7 +63,7 @@ export class ThroughputComponent implements OnInit, AfterViewInit, OnChanges {
 
   constructor(
     private ybServer : YugabyteDataSourceService
-  ) { 
+  ) {
   }
 
   ngOnInit(): void {
@@ -107,7 +107,7 @@ export class ThroughputComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   private getHeadingString() : string {
-    return (this.timingType == "LATENCY" ? "Latency " : "Throughput ") + "(" + this.timingMetricName + ")";
+    return (this.timingType == "LATENCY" ? "レイテンシー " : "スループット ") + "(" + this.timingMetricName + ")";
   }
 
   private defineHeading() {
@@ -144,16 +144,16 @@ export class ThroughputComponent implements OnInit, AfterViewInit, OnChanges {
       labels = ["Min", "Avg", "Max"];
     }
     else {
-      labels = ["Failed", "Success", "Total"];
+      labels = ["失敗", "成功", "合計"];
     }
     for (let i = 0; i < labels.length; i++) {
       let startX = (boxWidth / labels.length) * i;
       let classType = (i == 0) ? 'lineMin' : (i == 1) ? 'line' : 'lineMax';
-      xLabel.append("line") 
+      xLabel.append("line")
         .attr("x1", startX + 12)
-        .attr("y1", boxHeight/2)      
-        .attr("x2", startX + 30) 
-        .attr("y2", boxHeight/2) 
+        .attr("y1", boxHeight/2)
+        .attr("x2", startX + 30)
+        .attr("y2", boxHeight/2)
         .attr('class', 'data ' + classType);
       let textItem = xLabel.append('text')
         .attr('class', 'legendLabel ' + classType)
@@ -163,7 +163,7 @@ export class ThroughputComponent implements OnInit, AfterViewInit, OnChanges {
         .attr('font-size', '1em')
         .attr('fill', 'white')
         .text(labels[i])
-        .on("click", (evt : any, x: any) => { 
+        .on("click", (evt : any, x: any) => {
           let thisObj = d3.select(evt.srcElement);
           this.toggleVisibility(LineType.AVG, thisObj);
           this.toggleVisibility(LineType.MIN, thisObj);
@@ -218,7 +218,7 @@ export class ThroughputComponent implements OnInit, AfterViewInit, OnChanges {
       .attr('font-size', '1em')
       .attr('x', -this.margins.top-160)
       .attr('y', -this.margins.left+65)
-      .text(this.timingType == 'LATENCY' ? 'Latency (ms)' : 'Count');
+      .text(this.timingType == 'LATENCY' ? 'レイテンシー (ms)' : 'Count');
   }
 
   private defineAxes() {
@@ -298,7 +298,7 @@ export class ThroughputComponent implements OnInit, AfterViewInit, OnChanges {
       .attr("y", this.margins.top)
       .attr("width", this.width-this.margins.left - this.margins.right+1)
       .attr("height", this.height - this.margins.top - this.margins.bottom);
-						
+
     var visCont = this.svg.append('g')
             .attr("clip-path", "url(#clip)")
             .attr('class', 'vis');
@@ -350,7 +350,7 @@ export class ThroughputComponent implements OnInit, AfterViewInit, OnChanges {
       return (d3.max(this.data, d => this.getTotalTxns(d)) || 0) + 1;
     }
   }
-  
+
   private validatePoint(point : TimingPoint) : boolean {
     if (!point || !point.startTimeMs) return false;
     if (this.minTime > 0) return point.startTimeMs >= this.minTime;
@@ -469,8 +469,8 @@ export class ThroughputComponent implements OnInit, AfterViewInit, OnChanges {
           let cursor = d3.pointer(evt)[0];
           let date = this.xScale.invert(cursor);
           let time = date.getTime();
-          let point = d3.bisector(function(d) { 
-            return (d as TimingPoint).startTimeMs; 
+          let point = d3.bisector(function(d) {
+            return (d as TimingPoint).startTimeMs;
           });
           let closest = point.left(this.data, time, 1);
           if (closest > 0 && closest < this.data.length) {
