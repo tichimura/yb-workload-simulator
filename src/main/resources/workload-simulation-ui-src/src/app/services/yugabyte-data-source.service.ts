@@ -25,7 +25,7 @@ export class YugabyteDataSourceService {
       this.baseUrl = `${PROTOCOL}://localhost:${PORT}/`;
     }
     else {
-      this.baseUrl = `${PROTOCOL}://localhost:${PORT}/`;
+      this.baseUrl = "";
     }
   }
 
